@@ -1,0 +1,12 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "file manager written with node.js api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node manager.js"
+  },
+  "author": "whattablackhole",
+  "license": "ISC",
+  "type": "module"
+}
