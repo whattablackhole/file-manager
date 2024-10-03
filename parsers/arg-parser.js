@@ -1,10 +1,8 @@
-class ArgumentParseErorr extends Error {
-  constructor(reason) {
-    super(reason);
-  }
-}
+import { InvalidArgument } from "../errors.js";
+import  ParserBase  from "./base.js";
 
-export class FileManagerArgumentParser {
+
+export default class ArgumentParser extends ParserBase {
   #usageHelpMessage = `Correct command usage:
   [] - required arg
   () - optional arg 
@@ -19,9 +17,15 @@ npm run start -- [--username=string] (--data=string)
   #invalidValueTypeMessage = "Invalid value type";
 
   #requiredKeysCount = 1;
-  #supportedKeys = new Map([["--username", { required: true, type: "string" }]]);
+  #supportedKeys = new Map([
+    ["--username", { required: true, type: "string" }],
+  ]);
 
-  parseProcessArgs(args, truncCmdArgs = true) {
+  constructor() {
+    super();
+  }
+
+  parse(args, truncCmdArgs = true) {
     const argMap = new Map();
 
     const argsToParse = truncCmdArgs ? args.slice(2) : args;
@@ -39,7 +43,7 @@ npm run start -- [--username=string] (--data=string)
       if (!key.startsWith("--"))
         this.#throwArgumentError(this.#invalidFormatMessage);
 
-      if (!(this.#supportedKeys.has(key)))
+      if (!this.#supportedKeys.has(key))
         this.#throwArgumentError(`${this.#invalidArgumentNameMessage}: ${key}`);
 
       if (argMap.has(key))
@@ -55,9 +59,9 @@ npm run start -- [--username=string] (--data=string)
         parsedValue = this.#parseValue(keyInfo.type, value);
       } catch {
         this.#throwArgumentError(
-          `${
-            this.#invalidValueTypeMessage
-          }: value of ${key} must be of type: ${keyInfo.type}`
+          `${this.#invalidValueTypeMessage}: value of ${key} must be of type: ${
+            keyInfo.type
+          }`
         );
       }
 
@@ -73,15 +77,15 @@ npm run start -- [--username=string] (--data=string)
   }
 
   #parseValue(type, value) {
-    switch(type) {
-        case "string":
-            return value;
-        default:
-            throw new Error("Unknown value type");
+    switch (type) {
+      case "string":
+        return value;
+      default:
+        throw new Error("Unknown value type.");
     }
   }
 
   #throwArgumentError = (reason) => {
-    throw new ArgumentParseErorr(`${reason}.\n` + this.#usageHelpMessage);
+    throw new InvalidArgument(`${reason}.\n` + this.#usageHelpMessage);
   };
 }

@@ -4,7 +4,7 @@
   "description": "file manager written with node.js api",
   "main": "index.js",
   "scripts": {
-    "start": "node manager.js"
+    "start": "node index.js"
   },
   "author": "whattablackhole",
   "license": "ISC",
