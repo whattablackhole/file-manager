@@ -1,11 +1,13 @@
 import { InvalidArgument } from "../errors.js";
 import ParserBase from "./base.js";
+import path from "path";
 
 export default class CommandParser extends ParserBase {
+  
   matchers = new Map([
     ["cd", /^cd\s+([^\s]+)$/],
     ["cat", /^cat\s+([^\s]+)$/],
-    ["add", /^add\s+([^\s]+)$/],
+    ["add", new RegExp(`^add\\s+([^${path.sep}]+)$`)],
     ["rn", /^rn\s+([^\s]+)$/],
     ["mv", /^mv\s+([^\s]+)\s+([^\s]+)$/],
     ["os", /^os\s+([^\s]+)$/],

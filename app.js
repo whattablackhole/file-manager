@@ -7,6 +7,7 @@ import LsCommand from "./commands/ls.js";
 import UpCommand from "./commands/up.js";
 import CdCommand from "./commands/cd.js";
 import CatCommand from "./commands/cat.js";
+import AddCommand from "./commands/add.js";
 
 
 export default class App {
@@ -25,7 +26,7 @@ export default class App {
       // .add("hash", ()=>{})
       // .add("mv", ()=>{})
       // .add("cp", ()=>{})
-      // .add("add", ()=>{});
+      .add("add", new AddCommand());
     
 
     const argManager = new ArgManager(new ArgumentParser(), new CommandParser());
