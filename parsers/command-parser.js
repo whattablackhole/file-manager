@@ -39,7 +39,7 @@ export default class CommandParser extends ParserBase {
       throw new InvalidArgument(`Unknown command: ${commandName}`);
     }
 
-    const result = matcher.exec(args);
+    const result = matcher.exec(command);
 
     if (!result) {
       throw new InvalidArgument(
