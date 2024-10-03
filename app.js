@@ -6,6 +6,7 @@ import Commander from "./commander.js";
 import LsCommand from "./commands/ls.js";
 import UpCommand from "./commands/up.js";
 import CdCommand from "./commands/cd.js";
+import CatCommand from "./commands/cat.js";
 
 
 export default class App {
@@ -16,7 +17,7 @@ export default class App {
       .add("ls", new LsCommand())
       .add("up", new UpCommand())
       .add("cd", new CdCommand())
-      // .add("cat", () => {})
+      .add("cat", new CatCommand())
       // .add("rn", () => {})
       // .add("rm", () => {})
       // .add("compress", () => {})
