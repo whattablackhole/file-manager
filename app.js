@@ -8,9 +8,12 @@ import UpCommand from "./commands/up.js";
 import CdCommand from "./commands/cd.js";
 import CatCommand from "./commands/cat.js";
 import AddCommand from "./commands/add.js";
+import MoveCommand from "./commands/move.js";
+import CompressCommand from "./commands/compress.js";
 
 
 export default class App {
+  
   start() {
     const commander = new Commander();
 
@@ -19,16 +22,17 @@ export default class App {
       .add("up", new UpCommand())
       .add("cd", new CdCommand())
       .add("cat", new CatCommand())
+      .add("mv", new MoveCommand())
       // .add("rn", () => {})
       // .add("rm", () => {})
-      // .add("compress", () => {})
+      .add("compress", new CompressCommand())
       // .add("decompress", ()=>{})
       // .add("hash", ()=>{})
       // .add("mv", ()=>{})
       // .add("cp", ()=>{})
       .add("add", new AddCommand());
     
-
+    
     const argManager = new ArgManager(new ArgumentParser(), new CommandParser());
 
     argManager.initFromProcess(process.argv);

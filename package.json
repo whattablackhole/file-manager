@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "file manager written with node.js api",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "node index.js"
   },
   "author": "whattablackhole",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^22.7.4"
+  }
 }
