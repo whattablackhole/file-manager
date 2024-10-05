@@ -10,6 +10,8 @@ import CatCommand from "./commands/cat.js";
 import AddCommand from "./commands/add.js";
 import MoveCommand from "./commands/move.js";
 import CompressCommand from "./commands/compress.js";
+import RenameCommand from "./commands/rename.js";
+import CopyCommand from "./commands/copy.js";
 
 
 export default class App {
@@ -23,13 +25,13 @@ export default class App {
       .add("cd", new CdCommand())
       .add("cat", new CatCommand())
       .add("mv", new MoveCommand())
-      // .add("rn", () => {})
+      .add("rn", new RenameCommand())
       // .add("rm", () => {})
       .add("compress", new CompressCommand())
       // .add("decompress", ()=>{})
       // .add("hash", ()=>{})
       // .add("mv", ()=>{})
-      // .add("cp", ()=>{})
+      .add("cp", new CopyCommand())
       .add("add", new AddCommand());
     
     

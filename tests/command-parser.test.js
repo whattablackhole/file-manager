@@ -150,6 +150,8 @@ describe("Linux platform", () => {
         "'/va    r/lo   g/sys     tem.log'",
         "'./va    r/lo   g/sys     tem.log'",
         "/home/user/some_folder/another_folder/file.ext",
+        "/home/user/some_folder/another_folder/...",
+        "..............^_^"
       ];
 
       validTestCases.forEach((testCase) => {
@@ -166,6 +168,8 @@ describe("Linux platform", () => {
         "//",
         "/tmp/newfolder/",
         "/home/user/some_folder/another_folder/  file.ext",
+        "/home/user/some_folder/another_folder/..",
+        "/home/user/some_folder/another_folder/."
       ];
 
       invalidTestCases.forEach((testCase) => {

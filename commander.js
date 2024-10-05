@@ -13,8 +13,8 @@ export default class Commander {
         return this;
     }
 
-    async execute(alias, state, ...args) {
-        return await this.#commands.get(alias).execute(state, ...args);
+    async execute(alias, state, commandInfo) {
+        return await this.#commands.get(alias).execute(state, commandInfo);
     }
 
 }

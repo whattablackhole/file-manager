@@ -61,7 +61,7 @@ export default class FileManager {
       const newState = await this.#commander.execute(
         cmdPayload.name,
         { curDir: this.#currentDirectory },
-        cmdPayload.args
+        cmdPayload.commandInfo
       );
 
       if (newState) {
