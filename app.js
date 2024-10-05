@@ -14,6 +14,7 @@ import RenameCommand from "./commands/rename.js";
 import CopyCommand from "./commands/copy.js";
 import RemoveCommand from "./commands/remove.js";
 import OsCommand from "./commands/os.js";
+import HashCommand from "./commands/hash.js";
 
 
 export default class App {
@@ -32,8 +33,7 @@ export default class App {
       .add("os", new OsCommand())
       .add("compress", new CompressCommand())
       // .add("decompress", ()=>{})
-      // .add("hash", ()=>{})
-      // .add("mv", ()=>{})
+      .add("hash", new HashCommand())
       .add("cp", new CopyCommand())
       .add("add", new AddCommand());
     

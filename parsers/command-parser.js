@@ -57,14 +57,13 @@ export default class CommandParser extends ParserBase {
       ["ls", /^ls\s*$/],
       ["up", /^up\s*$/],
       [".exit", /^.exit\s*$/],
-      ["os", /^os\s+--(?<osCommandType>EOL|cpus|homedir|username|architecture)\s*$/],
-      ["hash", new RegExp(`^hash\\s+${this.pathToFileMatcher}$`)],
-      ["hash", /^hash\s+([^\s]+)$/],
+      ["os", /^os\s+--(?<osCommandType>EOL|cpus|homedir|username|architecture)$/],
+      ["hash", new RegExp(`^hash\\s+(?<pathToFileQuotes>"|')?${this.pathToFileMatcher}\\1$`)],
     ]);
   }
 
   parse(args) {
-    const command = args.trimStart();
+    const command = args.trim();
 
     if (!command) {
       throw new InvalidArgument("No command provided.");
