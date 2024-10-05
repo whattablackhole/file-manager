@@ -15,10 +15,9 @@ import CopyCommand from "./commands/copy.js";
 import RemoveCommand from "./commands/remove.js";
 import OsCommand from "./commands/os.js";
 import HashCommand from "./commands/hash.js";
-
+import DecompressCommand from "./commands/decompress.js";
 
 export default class App {
-  
   start() {
     const commander = new Commander();
 
@@ -32,13 +31,15 @@ export default class App {
       .add("rm", new RemoveCommand())
       .add("os", new OsCommand())
       .add("compress", new CompressCommand())
-      // .add("decompress", ()=>{})
+      .add("decompress", new DecompressCommand())
       .add("hash", new HashCommand())
       .add("cp", new CopyCommand())
       .add("add", new AddCommand());
-    
-    
-    const argManager = new ArgManager(new ArgumentParser(), new CommandParser());
+
+    const argManager = new ArgManager(
+      new ArgumentParser(),
+      new CommandParser()
+    );
 
     argManager.initFromProcess(process.argv);
 
