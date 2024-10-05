@@ -57,7 +57,7 @@ export default class CommandParser extends ParserBase {
       ["ls", /^ls\s*$/],
       ["up", /^up\s*$/],
       [".exit", /^.exit\s*$/],
-      ["os", /^os\s+([^\s]+)$/],
+      ["os", /^os\s+--(?<osCommandType>EOL|cpus|homedir|username|architecture)\s*$/],
       ["hash", new RegExp(`^hash\\s+${this.pathToFileMatcher}$`)],
       ["hash", /^hash\s+([^\s]+)$/],
     ]);

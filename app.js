@@ -13,6 +13,7 @@ import CompressCommand from "./commands/compress.js";
 import RenameCommand from "./commands/rename.js";
 import CopyCommand from "./commands/copy.js";
 import RemoveCommand from "./commands/remove.js";
+import OsCommand from "./commands/os.js";
 
 
 export default class App {
@@ -28,6 +29,7 @@ export default class App {
       .add("mv", new MoveCommand())
       .add("rn", new RenameCommand())
       .add("rm", new RemoveCommand())
+      .add("os", new OsCommand())
       .add("compress", new CompressCommand())
       // .add("decompress", ()=>{})
       // .add("hash", ()=>{})
