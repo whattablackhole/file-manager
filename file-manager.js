@@ -24,7 +24,7 @@ export default class FileManager {
   }
 
   async serve() {
-    const name = this.#argManager.getArg("username");
+    const name = this.#argManager.getArg("username") ?? "Anonymous";
 
     this.#sayHello(name);
 
@@ -79,7 +79,7 @@ export default class FileManager {
   };
 
   #onExit = () => {
-    const name = this.#argManager.getArg("username");
+    const name = this.#argManager.getArg("username") ?? "Anonymous";
 
     this.#sayGoodBye(name);
 

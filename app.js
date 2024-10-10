@@ -40,8 +40,13 @@ export default class App {
       new ArgumentParser(),
       new CommandParser()
     );
-
-    argManager.initFromProcess(process.argv);
+    
+    try {
+      argManager.initFromProcess(process.argv);
+    } catch {
+      console.log("Invalid input.");
+    }
+    
 
     const manager = new FileManager(argManager, commander);
 

@@ -17,6 +17,7 @@ export default class ArgManager {
 
     this.#cmdParser = cmdParser;
     this.#argParser = argParser;
+    this.#args = new Map();
   }
 
   initFromProcess(env) {
